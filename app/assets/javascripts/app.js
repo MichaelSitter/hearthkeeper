@@ -7,7 +7,7 @@ define(['angular',
 
 		return angular.module('app', [
 			'hearth.home',
-			'hearth.decks',
-			'hearth.common',
+			// 'hearth.decks',
+			// 'hearth.common',
 		]);
 	});

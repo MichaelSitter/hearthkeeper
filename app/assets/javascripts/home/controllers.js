@@ -2,7 +2,6 @@ define([], function() {
 	'use strict';
 
 	var HomeCtrl = function() {
-		console.log('home ctrl');
 	};
 	HomeCtrl.$inject = [];
 
