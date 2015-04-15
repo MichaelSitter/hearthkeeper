@@ -1,17 +1,3 @@
-/**
- * Play JavaScript routing as an AngularJS module.
- * Wraps Play's routes to use Angular's $http.
- * Example:
- * {{{
- * // For `POST /login controller.Application.login()` Play generates:
- * jsRoutes.controllers.Application.login()
- * // With playRoutes, this can be used like this:
- * playRoutes.controllers.Application.login().post({user:'username', password:'secret'}).then(function(response) {
- *   ...
- * )};
- * }}}
- * @author Marius Soutier, 2013
- */
 define(['angular', 'require', 'jsRoutes'], function (angular, require, jsRoutes) {
   'use strict';
 
