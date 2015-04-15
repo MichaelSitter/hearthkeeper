@@ -1,4 +1,6 @@
-define(['angular', './controllers'], function(angular, controllers) {
+define(['angular',
+	'./controllers',
+	], function(angular, controllers) {
 	'use strict';
 
 	var mod = angular.module('deck.routes', ['hearth.common']);

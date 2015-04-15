@@ -2,37 +2,22 @@ define([], function() {
 	'use strict';
 
 	var HomeCtrl = function() {
-		
+		console.log('home ctrl');
 	};
 	HomeCtrl.$inject = [];
 
-	/** Controls the header */
-	var HeaderCtrl = function($scope, userService, helper, $location) {
-		// Wrap the current user from the service in a watch expression
-		$scope.$watch(function() {
-			var user = userService.getUser();
-			return user;
-		}, function(user) {
-			$scope.user = user;
-		}, true);
-
-		$scope.logout = function() {
-			userService.logout();
-			$scope.user = undefined;
-			$location.path('/');
-		};
+	var HeaderCtrl = function(/*$scope*/) {
 	};
-	HeaderCtrl.$inject = ['$scope', 'userService', 'helper', '$location'];
+	HeaderCtrl.$inject = ['$scope'];
 
-	/** Controls the footer */
 	var FooterCtrl = function(/*$scope*/) {
 	};
-	//FooterCtrl.$inject = ['$scope'];
+	FooterCtrl.$inject = ['$scope'];
 
 	return {
 		HeaderCtrl: HeaderCtrl,
 		FooterCtrl: FooterCtrl,
-		HomeCtrl: HomeCtrl
+		HomeCtrl: HomeCtrl,
 	};
 
 });

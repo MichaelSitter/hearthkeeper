@@ -11,13 +11,18 @@
 	<body>
 		@*-- Header -- *@
 		<header class="navbar navbar-inverse navbar-fixed-top basics-nav" data-ng-controller="HeaderCtrl">
-			<h3>Hearthkeeper</h3>
+			<h3>Hearthkeeper </h3> 
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="#/login">Login</a></li>
+				<li>
+					<a class="btn btn-default" href="#/decks" role="button">Decks</a>
+				</li>
+				<li>
+					<a class="btn btn-default" href="#/login" role="button">Login</a>
+				</li>
 			</ul>
 		</header>
 		@* -- Main Content -- *@
-		<div class="container" data-ng-cloak>
+		<div class="container">
 			<div data-ng-view></div>
 		</div>
 		<footer data-ng-controller="FooterCtrl">

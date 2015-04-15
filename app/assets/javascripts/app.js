@@ -1,6 +1,6 @@
 define(['angular',
 	'home',
-	// 'decks',
+	'decks',
 	'common',
 	], function(angular) {
 		'use strict';
