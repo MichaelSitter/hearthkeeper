@@ -1,7 +1,7 @@
 <h2 ng-bind="className">
 </h2>
 <div class="row">
-	<div class="search-area" ng-show="!loading">
+	<div class="col-md-6 search-area" ng-show="!loading">
 		<ul>
 			<li ng-click="activeCategory = className" ng-bind="className"></li>
 			<li ng-click="activeCategory = null">Neutral</li>
@@ -38,7 +38,7 @@
 			</nav>
 		</div>
 	</div>
-	<div class="active-deck">
+	<div class="col-md-6 active-deck">
 		deck goes here!!
 	</div>
 </div>
