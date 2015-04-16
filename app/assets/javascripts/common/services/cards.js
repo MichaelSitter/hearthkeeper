@@ -10,17 +10,31 @@ define(['angular'], function(angular) {
 		$httpProvider.defaults.cache = true;
 	});
 
-	mod.service('cards', function($http) {
+	mod.service('cards', function($http, $q) {
 
 		var url = 'https://irythia-hs.p.mashape.com/cards';
 
-		this.get = function (id, opts) {
+		this.get = function (opts) {
+
 			opts = opts || {};
 			opts.cache = true;
-			if (id) {
-				return $http.get(url + '/' + id, opts);
+
+			var cards;
+			try {
+				cards = JSON.parse(localStorage.cards);
+			} catch (e) {}
+
+			if (cards) {
+				var def = $q.defer();
+				def.resolve(cards);
+				return def.promise;
 			}
-			return $http.get(url, opts);
+
+			return $http.get(url, opts)
+				.success(function (result) {
+					localStorage.cards = JSON.stringify(result);
+					return result;
+				});
 		};
 	});
 

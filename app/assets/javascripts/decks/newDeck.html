@@ -1,20 +1,44 @@
-<h2>
-	<a ng-href="#"><span class="glyphicon glyphicon-arrow-left"></span></a>
-	{{className}}
+<h2 ng-bind="className">
 </h2>
 <div class="row">
-	<ul>
-		<li ng-click="active = className"></li>
-		<li ng-click="active = null"></li>
-	</ul>
-	<div>
-		<div ng-show="active == className"
-			ng-repeat="card in classCards">
-			{{card.name}}
+	<div class="search-area" ng-show="!loading">
+		<ul>
+			<li ng-click="activeCategory = className" ng-bind="className"></li>
+			<li ng-click="activeCategory = null">Neutral</li>
+		</ul>
+		<div>
+			<div ng-repeat="card in cards">
+				{{card.name}}
+			</div>
+			<div class="mana-filters">
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>4</button>
+				<button>5</button>
+				<button>6</button>
+				<button>7</button>
+				<button>8</button>
+				<button>9+</button>
+			</div>
+			<input ng-bind="searchTerm" placeholder="Search term..."/>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
-		<div ng-show="active == null"
-			ng-repeat="card in neutralCards">
-			{{card.name}}
-		</div>
+	</div>
+	<div class="active-deck">
+		deck goes here!!
 	</div>
 </div>
