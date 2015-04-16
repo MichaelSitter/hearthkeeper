@@ -1,8 +1,9 @@
 define(['angular',
+	'./services/cards',
 	'./services/helper',
 	'./services/playRoutes',
 	'./filters',
-	'./directives/example'
+	'./directives/example',
 	],
 	function(angular) {
 		'use strict';
@@ -12,7 +13,6 @@ define(['angular',
 				'common.cards',
 				'common.helper',
 				'common.playRoutes',
-				// 'common.filters',
-				// 'common.directives.example'
+				'common.filters',
 			]);
 	});
