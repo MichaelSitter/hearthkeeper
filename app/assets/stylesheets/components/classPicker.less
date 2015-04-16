@@ -1,12 +1,52 @@
-.class-picker:extend(.jumbotron all) {
-	section {
-		width: 280px;
+.class-picker {
+
+	ul {
 		margin-left: auto;
 		margin-right: auto;
-	}
-	a {
-		float: left;
-		padding-right: @double-unit;
-		padding-bottom: @double-unit;
+		list-style-type: none;
+		padding: 0px;
+		width: 760px;
+		li {
+
+			float: left;
+			padding-right: @double-unit;
+			padding-bottom: @double-unit;
+			background-image: url('../images/classes/heroes_sprite.png');
+			width: @hero-sprite-width;
+			height: @hero-sprite-height;
+			a {
+				display: block;
+				width: @hero-sprite-width;
+				height: @hero-sprite-height;
+			}
+
+			&.druid {
+				background-position: -(@hero-sprite-width * 5) @hero-sprite-height;
+			}
+			&.hunter {
+				background-position: -(@hero-sprite-width * 4) @hero-sprite-height;
+			}
+			&.mage {
+				background-position: -(@hero-sprite-width * 7) @hero-sprite-height;
+			}
+			&.paladin {
+				background-position: -(@hero-sprite-width * 3) @hero-sprite-height;
+			}
+			&.priest {
+				background-position: -(@hero-sprite-width * 8) @hero-sprite-height;
+			}
+			&.rogue {
+				background-position: -(@hero-sprite-width * 2) @hero-sprite-height;
+			}
+			&.shaman {
+				background-position: -(@hero-sprite-width * 1) @hero-sprite-height;
+			}
+			&.warlock {
+				background-position: -(@hero-sprite-width * 6) @hero-sprite-height;
+			}
+			&.warrior {
+				background-position: 0 @hero-sprite-height;
+			}
+		}
 	}
 }
