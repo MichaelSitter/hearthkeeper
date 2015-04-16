@@ -1,0 +1,20 @@
+<h2>
+	<a ng-href="#"><span class="glyphicon glyphicon-arrow-left"></span></a>
+	{{className}}
+</h2>
+<div class="row">
+	<ul>
+		<li ng-click="active = className"></li>
+		<li ng-click="active = null"></li>
+	</ul>
+	<div>
+		<div ng-show="active == className"
+			ng-repeat="card in classCards">
+			{{card.name}}
+		</div>
+		<div ng-show="active == null"
+			ng-repeat="card in neutralCards">
+			{{card.name}}
+		</div>
+	</div>
+</div>
