@@ -29,6 +29,7 @@
 			'requirejs': ['../lib/requirejs/require'],
 			'jquery': ['../lib/jquery/jquery'],
 			'angular': ['../lib/angularjs/angular'],
+			'underscore': ['../lib/underscorejs/underscore'],
 			'angular-route': ['../lib/angularjs/angular-route'],
 			'angular-cookies': ['../lib/angularjs/angular-cookies'],
 			'bootstrap': ['../lib/bootstrap/js/bootstrap'],
