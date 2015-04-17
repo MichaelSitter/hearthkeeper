@@ -9,5 +9,6 @@ define(['angular',
 			'hearth.home',
 			'hearth.decks',
 			'hearth.common',
+			'ui.bootstrap',
 		]);
 	});

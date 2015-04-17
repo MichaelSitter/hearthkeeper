@@ -23,7 +23,8 @@
 			},
 			'angular-route': ['angular'],
 			'angular-cookies': ['angular'],
-			'bootstrap': ['jquery']
+			'angular-ui': ['angular'],
+			'bootstrap': ['jquery'],
 		},
 		paths: {
 			'requirejs': ['../lib/requirejs/require'],
@@ -32,6 +33,7 @@
 			'underscore': ['../lib/underscorejs/underscore'],
 			'angular-route': ['../lib/angularjs/angular-route'],
 			'angular-cookies': ['../lib/angularjs/angular-cookies'],
+			'angular-ui': ['../lib/angular-ui-bootstrap/ui-bootstrap-tpls'],
 			'bootstrap': ['../lib/bootstrap/js/bootstrap'],
 			'jsRoutes': ['/jsroutes']
 		}
@@ -44,6 +46,7 @@
 	require(['angular',
 			'angular-cookies',
 			'angular-route',
+			'angular-ui',
 			'jquery',
 			'bootstrap',
 			'./app',

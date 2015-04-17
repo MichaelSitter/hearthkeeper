@@ -1,11 +1,16 @@
 define(['angular',
-		'./routes',
 		'./controllers',
-	], function(angular) {
+		'./routes',
+	], function(angular, controllers) {
 	'use strict';
 
-	return angular.module('hearth.decks', [
+	var mod = angular.module('hearth.decks', [
 		'ngRoute',
 		'deck.routes',
 	]);
+
+	mod.controller('SearchCards', controllers.SearchCards);
+	mod.controller('CurrentDeck', controllers.CurrentDeck);
+
+	return mod;
 });
