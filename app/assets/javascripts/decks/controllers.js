@@ -24,7 +24,9 @@ define(['underscore'], function (_) {
 
 		var filterByName = function (c) {
 			return function(card) {
-				return card.name.indexOf(c) > -1;
+				return card.name
+					.toLowerCase()
+					.indexOf(c.toLowerCase()) > -1;
 			};
 		};
 
