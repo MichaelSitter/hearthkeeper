@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-6" ng-show="!loading">
+	<div class="col-md-8" ng-show="!loading">
 		<div class="filters">
 			<button type="button"
 				class="btn btn-default pull-left category"
@@ -72,11 +72,15 @@
 			</table>
 		</div>
 	</div>
-	<div class="col-md-6 active-deck">
+	<div class="col-md-4 active-deck">
+		<!-- TODO: move into separate template  -->
 		<div ng-controller="CurrentDeck" class="active-deck">
 			<table>
 				<tbody>
-
+				<tr ng-repeat="entry in deck" tooltip-html-unsafe="{{entry.card.description}}">
+					<td ng-bind="entry.count"></td>
+					<td ng-bind="entry.card.name"></td>
+				</tr>
 				</tbody>
 			</table>
 		</div>

@@ -88,10 +88,14 @@ define(['underscore'], function (_) {
 	};
 	SearchCards.$inject = ['$scope', '$routeParams', 'cards', 'deckService'];
 
-	var CurrentDeck = function ($scope) {
-		console.log($scope);
+	var CurrentDeck = function ($scope, deckService) {
+		$scope.$watch(function () {
+			return deckService.getCards();
+		}, function (newDeck) {
+			$scope.deck = newDeck;
+		}, true);
 	};
-	CurrentDeck.$inject = ['$scope'];
+	CurrentDeck.$inject = ['$scope', 'deckService'];
 
 	return {
 		SearchCards: SearchCards,

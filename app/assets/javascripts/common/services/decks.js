@@ -13,25 +13,29 @@ define(['angular', 'underscore'], function(angular, _) {
 		this.addCard = function (card) {
 			cards = cards || {};
 
-			if (isValidInsertion(card)) {
-				if (cards[card.name]) {
-					cards[card.name].count++;
-				} else {
-					cards[card.name] = {
-						card: card,
-						count: 1,
-					};
-				}
+			if (!isValidInsertion(card)) {
+				return;
+			}
+
+			if (cards[card.name]) {
+				cards[card.name].count++;
+			} else {
+				cards[card.name] = {
+					card: card,
+					count: 1,
+				};
 			}
 		};
 
 		this.removeCard = function (card) {
 			var entry = cards[card.name];
 
-			if (entry) {
-				if (entry.count === 1) {
-					delete cards[card.name];
-				}
+			if (!entry) {
+				return;
+			}
+
+			if (entry.count === 1) {
+				delete cards[card.name];
 			} else {
 				entry.count--;
 			}
@@ -54,8 +58,10 @@ define(['angular', 'underscore'], function(angular, _) {
 			if (!entry) {
 				return true;
 			}
-			if (entry.count > 1 || entry.rarity === 'Legendary' || cardCount() === 30) {
+			if (entry.count > 1 || entry.card.rarity === 'Legendary' || cardCount() === 30) {
 				return false;
+			} else {
+				return true;
 			}
 		};
 
