@@ -6,10 +6,15 @@
 
 	table {
 		background-color: fade(@white, 20%);
+		tbody > tr > td > img, i {
+			cursor: pointer;
+			width: 15px;
+		}
 	}
 }
 
 .filters {
+	height: 60px;
 	padding: @unit;
 	margin-bottom: 3 * @unit;
 	input {
@@ -29,5 +34,5 @@
 }
 
 .active-deck {
-
+	
 }

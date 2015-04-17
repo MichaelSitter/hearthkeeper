@@ -12,19 +12,23 @@
 				Neutral
 			</button>
 			<div class="mana-filters pull-right">
-				<button ng-click="manaFilter = 1">1</button>
-				<button ng-click="manaFilter = 2">2</button>
-				<button ng-click="manaFilter = 3">3</button>
-				<button ng-click="manaFilter = 4">4</button>
-				<button ng-click="manaFilter = 5">5</button>
-				<button ng-click="manaFilter = 6">6</button>
-				<button ng-click="manaFilter = 7">7</button>
-				<button ng-click="manaFilter = 8">8</button>
-				<button ng-click="manaFilter = 9">9</button>
+				<button ng-click="costFilter = 1">1</button>
+				<button ng-click="costFilter = 2">2</button>
+				<button ng-click="costFilter = 3">3</button>
+				<button ng-click="costFilter = 4">4</button>
+				<button ng-click="costFilter = 5">5</button>
+				<button ng-click="costFilter = 6">6</button>
+				<button ng-click="costFilter = 7">7</button>
+				<button ng-click="costFilter = 8">8</button>
+				<button ng-click="costFilter = 9">9</button>
+				<button ng-click="costFilter = 10">+</button>
 			</div>
 			<input class="pull-left"
 				placeholder="Search term..."
-				ng-bind="searchTerm" />
+				ng-model="searchTerm" />
+			<button class="pull-left" ng-click="clearFilters()">
+				X
+			</button>
 		</div>
 		<div class="card-search">
 			<table class="table table-striped">
@@ -41,12 +45,22 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="card in cards">
-						<td ng-bind="card.name"></td>
-						<td ng-bind="card.card_type"></td>
-						<td ng-bind="card.cost"></td>
-						<td ng-bind="card.attack"></td>
-						<td ng-bind="card.health"></td>
-						<td ng-bind="card.durability"></td>
+						<td ng-bind="card.name">
+						</td>
+						<td ng-bind="card.card_type">
+						</td>
+						<td>
+							<img ng-src="assets/images/stats/mana.png">{{card.cost}}
+						</td>
+						<td>
+							<img ng-if="card.attack" ng-src="assets/images/stats/attack.png">{{card.attack}}
+						</td>
+						<td>
+							<img ng-if="card.health" ng-src="assets/images/stats/health.png">{{card.health}}
+						</td>
+						<td>
+							<img ng-if="card.durability" ng-src="assets/images/stats/weapon-durability.png">{{card.durability}}
+						</td>
 						<td>
 							<i ng-click="addCard(card)" class="glyphicon glyphicon-plus-sign"></i>
 							<i ng-click="removeCard(card)" class="glyphicon glyphicon-minus-sign"></i>
@@ -57,7 +71,7 @@
 		</div>
 	</div>
 	<div class="col-md-6 active-deck">
-		<div class="active-deck">
+		<div ng-controller="CurrentDeck" class="active-deck">
 		</div>
 	</div>
 </div>

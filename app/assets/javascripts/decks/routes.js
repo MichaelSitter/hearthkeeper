@@ -8,7 +8,7 @@ define(['angular',
 		$routeProvider
 		.when('/decks/new/:class', {
 			templateUrl: '/assets/javascripts/decks/newDeck.html',
-			controller: controllers.NewDeck,
+			controller: controllers.SearchCards,
 		});
 	}]);
 	return mod;

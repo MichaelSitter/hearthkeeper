@@ -1,7 +1,7 @@
 define(['underscore'], function (_) {
 	'use strict';
 
-	var NewDeck = function ($scope, $routeParams, cardService) {
+	var SearchCards = function ($scope, $routeParams, cardService, deckService) {
 
 		$scope.className = $routeParams['class'];
 		$scope.activeCategory = $routeParams['class'];
@@ -18,12 +18,18 @@ define(['underscore'], function (_) {
 
 		var filterByCost = function (c) {
 			return function(card) {
+				if (!c) {
+					return true;
+				}
 				return card.cost === c;
 			};
 		};
 
 		var filterByName = function (c) {
 			return function(card) {
+				if (!c) {
+					return true;
+				}
 				return card.name
 					.toLowerCase()
 					.indexOf(c.toLowerCase()) > -1;
@@ -38,6 +44,9 @@ define(['underscore'], function (_) {
 			var cards = $scope.activeCategory === null ?
 				_.clone(neutralCards) :
 				_.clone(classCards);
+
+			cards = _.filter(cards, filterByName($scope.searchTerm));
+			cards = _.filter(cards, filterByCost($scope.costFilter));
 			return _.sortBy(cards, orderByCost);
 		};
 
@@ -57,22 +66,35 @@ define(['underscore'], function (_) {
 			$scope.costFilter = null;
 		};
 
-		$scope.$watch('searchTerm', function (val) {
-			$scope.cards = _.filter(getActiveCardSet(), filterByName(val));
+		$scope.$watch('searchTerm', function () {
+			$scope.cards = getActiveCardSet();
 		});
 
-		$scope.$watch('costFilter', function (val) {
-			$scope.cards = _.filter(getActiveCardSet(), filterByCost(val));
+		$scope.$watch('costFilter', function () {
+			$scope.cards = getActiveCardSet();
 		});
 
 		$scope.$watch('activeCategory', function () {
 			$scope.cards = getActiveCardSet();
 		});
-	};
 
-	NewDeck.$inject = ['$scope', '$routeParams', 'cards'];
+		$scope.addCard = function (card) {
+			deckService.addCard(card);
+		};
+
+		$scope.removeCard = function (card) {
+			deckService.removeCard(card);
+		};
+	};
+	SearchCards.$inject = ['$scope', '$routeParams', 'cards', 'deckService'];
+
+	var CurrentDeck = function ($scope) {
+		console.log($scope);
+	};
+	CurrentDeck.$inject = ['$scope'];
 
 	return {
-		NewDeck: NewDeck,
+		SearchCards: SearchCards,
+		CurrentDeck: CurrentDeck,
 	};
 });
