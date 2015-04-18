@@ -1,7 +1,7 @@
 define(['angular', 'underscore'], function(angular, _) {
 	'use strict';
 
-	var mod = angular.module('common.deckService', []);
+	var mod = angular.module('common.decks', []);
 	mod.service('deckService', function () {
 
 		var cards = {};
