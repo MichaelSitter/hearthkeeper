@@ -1,8 +1,7 @@
 define([], function() {
 	'use strict';
 
-	var HomeCtrl = function($scope) {
-		console.log($scope);
+	var HomeCtrl = function(/*$scope*/) {
 	};
 	HomeCtrl.$inject = ['$scope'];
 

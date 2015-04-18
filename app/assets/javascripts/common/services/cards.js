@@ -3,12 +3,12 @@ define(['angular'], function(angular) {
 
 	var mod = angular.module('common.cards', []);
 
-	mod.config(function ($httpProvider) {
+	mod.config(['$httpProvider', function ($httpProvider) {
 		$httpProvider.defaults.headers.get = {
 			'X-Mashape-Key': '3dVeS2dDqsmshUl9HoOVAFLRV7B3p1onhGTjsnjC9XsQ6W2XFc',
 		};
 		$httpProvider.defaults.cache = true;
-	});
+	}]);
 
 	mod.service('cards', ['$http', '$q', function($http, $q) {
 
@@ -31,9 +31,9 @@ define(['angular'], function(angular) {
 			}
 
 			return $http.get(url, opts)
-				.success(function (result) {
-					localStorage.cards = JSON.stringify(result);
-					return result;
+				.then(function (result) {
+					localStorage.cards = JSON.stringify(result.data);
+					return result.data;
 				});
 		};
 	}]);
