@@ -6,7 +6,7 @@
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="deck in decks">
 				<img class="hero-icon pull-left"
-					ng-src="assets/images/classes/icon-{{deck.heroClass}}.png">
+					ng-src="assets/images/classes/icon-{{deck.heroClass.toLowerCase()}}.png">
 				<a ng-href="#/decks/edit/{{deck.name}}">
 					<h3 ng-bind="deck.name"></h3>
 				</a>
