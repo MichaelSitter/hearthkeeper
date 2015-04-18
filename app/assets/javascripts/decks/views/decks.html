@@ -3,20 +3,17 @@
 		<h3>Decks <a ng-href="#">+</a></h3>
 	</div>
 	<div class="panel-body">
-		<table>
-			<tbody>
-				<tr ng-repeat="deck in decks">
-					<td>
-						<img class="hero-icon" ng-src="assets/images/classes/icon-{{deck.heroClass}}.png">
-					</td>
-					<td>
-						<a ng-href="#/decks/edit/{{deck.name}}">
-							<h3 ng-bind="deck.name"></h3>
-						</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="deck in decks">
+				<img class="hero-icon pull-left"
+					ng-src="assets/images/classes/icon-{{deck.heroClass}}.png">
+				<a ng-href="#/decks/edit/{{deck.name}}">
+					<h3 ng-bind="deck.name"></h3>
+				</a>
+				<i class="glyphicon glyphicon-remove pull-right"
+					ng-click="deleteDeck(deck)"></i>
+			</li>
+		</ul>
 		<h2 ng-if="!decks">
 			No saved decks.
 		</h2>

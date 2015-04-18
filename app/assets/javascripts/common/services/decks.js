@@ -20,8 +20,8 @@ define(['angular', 'underscore'], function(angular, _) {
 			return deckName;
 		};
 
-		this.setHeroClass = function (heroClass) {
-			heroClass = heroClass;
+		this.setHeroClass = function (h) {
+			heroClass = h;
 		};
 
 		this.addCard = function (card) {
@@ -67,7 +67,7 @@ define(['angular', 'underscore'], function(angular, _) {
 			return decks;
 		};
 
-		this.saveDeck = function (deckName, heroClass) {
+		this.saveDeck = function (deckName) {
 			var decks = {};
 			try {
 				decks = JSON.parse(localStorage.decks);
@@ -96,7 +96,10 @@ define(['angular', 'underscore'], function(angular, _) {
 		};
 
 		this.deleteDeck = function (deckName) {
-			delete localStorage.decks[deckName];
+			var decks;
+			decks = JSON.parse(localStorage.decks);
+			delete decks[deckName];
+			localStorage.decks = JSON.stringify(decks);
 		};
 
 		this.cardCount = function () {

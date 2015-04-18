@@ -111,7 +111,10 @@ define(['underscore'], function (_) {
 		};
 
 		$scope.save = function () {
-			deckService.saveDeck($scope.deckName, $routeParams.heroClass);
+			if (!$scope.deckName) {
+				return;
+			}
+			deckService.saveDeck($scope.deckName);
 		};
 
 		$scope.addCard = function (card) {
@@ -139,6 +142,11 @@ define(['underscore'], function (_) {
 
 	var Decks = function ($scope, deckService) {
 		$scope.decks = deckService.getDecks();
+
+		$scope.deleteDeck = function (deck) {
+			deckService.deleteDeck(deck.name);
+			$scope.decks = deckService.getDecks();
+		};
 	};
 	Decks.$inject = ['$scope', 'deckService'];
 
