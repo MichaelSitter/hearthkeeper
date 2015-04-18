@@ -35,6 +35,7 @@
 				<thead>
 					<tr>
 						<td>Name</td>
+						<td></td>
 						<td>Type</td>
 						<td>Cost</td>
 						<td>Attack</td>
@@ -48,6 +49,9 @@
 						tooltip-html-unsafe="{{card.description}}"
 						tooltip-placement="right">
 						<td ng-bind="card.name">
+						</td>
+						<td>
+							<img ng-src="assets/images/rarity/{{card.rarity}}.png">
 						</td>
 						<td ng-bind="card.card_type">
 						</td>
