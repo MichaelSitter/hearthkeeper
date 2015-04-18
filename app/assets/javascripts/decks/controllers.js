@@ -91,11 +91,23 @@ define(['underscore'], function (_) {
 	SearchCards.$inject = ['$scope', '$routeParams', 'cards', 'deckService'];
 
 	var CurrentDeck = function ($scope, deckService) {
+
 		$scope.$watch(function () {
 			return deckService.getCards();
 		}, function (newDeck) {
+
 			$scope.deck = newDeck;
+			$scope.cardCount = deckService.cardCount();
+			$scope.dust = deckService.dustCount();
 		}, true);
+
+		$scope.clear = function () {
+			deckService.clearCards();
+		};
+
+		$scope.save = function () {
+			deckService.saveDeck($scope.deckName);
+		};
 	};
 	CurrentDeck.$inject = ['$scope', 'deckService'];
 

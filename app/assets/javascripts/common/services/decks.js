@@ -46,11 +46,42 @@ define(['angular', 'underscore'], function(angular, _) {
 		};
 
 		this.saveDeck = function (deckName) {
-			console.log(deckName);
+			localStorage.decks[deckName] = JSON.stringify(cards);
 		};
 
 		this.loadDeck = function (deckName) {
-			console.log(deckName);
+			cards = JSON.parse(localStorage.decks[deckName]);
+		};
+
+		this.deleteDeck = function (deckName) {
+			delete localStorage.decks[deckName];
+		};
+
+		this.cardCount = function () {
+			return cardCount();
+		};
+
+		this.dustCount = function () {
+			return _.reduce(cards, function (total, entry) {
+				var val;
+				switch (entry.card.rarity) {
+					case 'Common':
+						val = 40;
+						break;
+					case 'Rare':
+						val = 100;
+						break;
+					case 'Epic':
+						val = 400;
+						break;
+					case 'Legendary':
+						val = 1600;
+						break;
+					default:
+						val = 0;
+				}
+				return total += val * entry.count;
+			}, 0);
 		};
 
 		var isValidInsertion = function (card) {
@@ -67,7 +98,7 @@ define(['angular', 'underscore'], function(angular, _) {
 
 		var cardCount = function () {
 			var count = 0;
-			_.values(function (entry) {
+			_.each(cards, function (entry) {
 				count += entry.count;
 			});
 			return count;

@@ -14,13 +14,24 @@
 }
 
 .filters {
-	height: 60px;
+	height: 86px;
 	padding: @unit;
 	margin-bottom: 3 * @unit;
+
+	ul.nav > li {
+		border-radius: @unit;
+		background-color: fade(@white, 50%);
+		a {
+			img {
+				width: 50px;
+			}
+		}
+	}
 	input {
-		padding: @unit / 2;
+		margin-right: @unit;
 	}
 	.mana-filters {
+		margin-right: @unit;
 		clear: both;
 		button {
 			background: url('../images/stats/mana.png');
@@ -34,5 +45,5 @@
 }
 
 .active-deck {
-	
+
 }
