@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 		$httpProvider.defaults.cache = true;
 	});
 
-	mod.service('cards', function($http, $q) {
+	mod.service('cards', ['$http', '$q', function($http, $q) {
 
 		var url = 'https://irythia-hs.p.mashape.com/cards';
 
@@ -36,7 +36,7 @@ define(['angular'], function(angular) {
 					return result;
 				});
 		};
-	});
+	}]);
 
 	return mod;
 });
