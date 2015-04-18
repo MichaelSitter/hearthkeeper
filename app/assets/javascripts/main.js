@@ -22,6 +22,9 @@
 			'angular-route': ['angular'],
 			'angular-cookies': ['angular'],
 			'angular-ui': ['angular'],
+			'underscore': {
+				exports: '_',
+			},
 			'bootstrap': ['jquery'],
 		},
 		paths: {
@@ -46,6 +49,7 @@
 			'angular-route',
 			'angular-ui',
 			'jquery',
+			'underscore',
 			'bootstrap',
 			'./app',
 		],
