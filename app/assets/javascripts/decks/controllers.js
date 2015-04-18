@@ -2,16 +2,15 @@ define(['underscore'], function (_) {
 	'use strict';
 
 	var NewDeck = function ($routeParams, deckService) {
+		deckService.clearCards();
 		deckService.setHeroClass($routeParams.heroClass);
 	};
 	NewDeck.$inject = ['$routeParams', 'deckService'];
 
 	var SearchCards = function ($scope, $routeParams, cardService, deckService) {
 
-		deckService.clearCards();
-
-		$scope.heroClass = $routeParams.heroClass;
-		$scope.activeCategory = $routeParams.heroClass;
+		$scope.heroClass = $routeParams.heroClass || deckService.getHeroClass();
+		$scope.activeCategory = $scope.heroClass;
 		$scope.loading = true;
 
 		var classCards;
@@ -97,14 +96,12 @@ define(['underscore'], function (_) {
 
 	var CurrentDeck = function ($scope, $routeParams, deckService) {
 
-		if ($routeParams.deckName) {
-			$scope.deckName = $routeParams.deckName;
-		}
+		$scope.deckName = deckService.getDeckName();
 
 		$scope.$watch(function () {
 			return deckService.getCards();
-		}, function (newDeck) {
-			$scope.deck = newDeck;
+		}, function (deckEntries) {
+			$scope.deckEntries = deckEntries;
 			$scope.cardCount = deckService.cardCount();
 			$scope.dust = deckService.dustCount();
 		}, true);
@@ -114,7 +111,7 @@ define(['underscore'], function (_) {
 		};
 
 		$scope.save = function () {
-			deckService.saveDeck($scope.deckName, $scope.heroClass);
+			deckService.saveDeck($scope.deckName, $routeParams.heroClass);
 		};
 
 		$scope.addCard = function (card) {
@@ -127,11 +124,21 @@ define(['underscore'], function (_) {
 	};
 	CurrentDeck.$inject = ['$scope', '$routeParams', 'deckService'];
 
-	var EditDeck = function () {
+	var EditDeck = function ($scope, $routeParams, deckService) {
+		var deck = deckService.loadDeck($routeParams.deckName);
+
+		$scope.cards = deck.cards;
+		$scope.deckName = deck.name;
+		$scope.heroClass = deck.heroClass;
+
+		$scope.update = function () {
+			deckService.saveDeck($scope.deckName, $scope.heroClass);
+		};
 	};
+	EditDeck.$inject = ['$scope', '$routeParams', 'deckService'];
 
 	var Decks = function ($scope, deckService) {
-		$scope.decksList = deckService.getDecks();
+		$scope.decks = deckService.getDecks();
 	};
 	Decks.$inject = ['$scope', 'deckService'];
 

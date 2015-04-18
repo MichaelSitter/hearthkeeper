@@ -5,10 +5,19 @@ define(['angular', 'underscore'], function(angular, _) {
 	mod.service('deckService', function () {
 
 		var cards = {};
+		var deckName = '';
 		var heroClass;
 
 		this.getCards = function () {
 			return _.clone(cards);
+		};
+
+		this.getHeroClass = function () {
+			return heroClass;
+		};
+
+		this.getDeckName = function () {
+			return deckName;
 		};
 
 		this.setHeroClass = function (heroClass) {
@@ -67,16 +76,23 @@ define(['angular', 'underscore'], function(angular, _) {
 				delete localStorage.decks;
 			}
 			decks[deckName] = {
+				name: deckName,
 				cards: cards,
 				heroClass: heroClass,
 			};
 			localStorage.decks = JSON.stringify(decks);
 		};
 
-		this.loadDeck = function (deckName) {
-			var deck = JSON.parse(localStorage.decks[deckName]);
+		this.loadDeck = function (id) {
+			var deck;
+			try {
+				deck = JSON.parse(localStorage.decks)[id];
+			} catch (e) { }
+			deckName = deck.name;
 			cards = deck.cards;
 			heroClass = deck.heroClass;
+
+			return deck;
 		};
 
 		this.deleteDeck = function (deckName) {

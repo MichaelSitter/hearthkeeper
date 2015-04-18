@@ -1,0 +1,24 @@
+<div class="deck-list panel panel-default">
+	<div class="panel-heading">
+		<h3>Decks <a ng-href="#">+</a></h3>
+	</div>
+	<div class="panel-body">
+		<table>
+			<tbody>
+				<tr ng-repeat="deck in decks">
+					<td>
+						<img class="hero-icon" ng-src="assets/images/classes/icon-{{deck.heroClass}}.png">
+					</td>
+					<td>
+						<a ng-href="#/decks/edit/{{deck.name}}">
+							<h3 ng-bind="deck.name"></h3>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 ng-if="!decks">
+			No saved decks.
+		</h2>
+	</div>
+</div>

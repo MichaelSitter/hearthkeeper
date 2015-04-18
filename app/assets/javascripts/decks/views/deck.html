@@ -7,7 +7,7 @@
 	<div class="panel-body">
 		<table>
 			<tbody>
-				<tr ng-repeat="entry in deck" tooltip-html-unsafe="{{entry.card.description}}">
+				<tr ng-repeat="entry in deckEntries" tooltip-html-unsafe="{{entry.card.description}}">
 					<td ng-bind="entry.card.name"></td>
 					<td ng-bind="entry.count"></td>
 					<td>
