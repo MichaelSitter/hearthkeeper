@@ -1,6 +1,9 @@
 define(['underscore'], function (_) {
 	'use strict';
 
+	var NewDeck = function () {
+	};
+
 	var SearchCards = function ($scope, $routeParams, cardService, deckService) {
 
 		deckService.clearCards();
@@ -111,8 +114,17 @@ define(['underscore'], function (_) {
 	};
 	CurrentDeck.$inject = ['$scope', 'deckService'];
 
+	var EditDeck = function () {
+	};
+
+	var Decks = function () {
+	};
+
 	return {
+		NewDeck: NewDeck,
 		SearchCards: SearchCards,
 		CurrentDeck: CurrentDeck,
+		EditDeck: EditDeck,
+		Decks: Decks,
 	};
 });
