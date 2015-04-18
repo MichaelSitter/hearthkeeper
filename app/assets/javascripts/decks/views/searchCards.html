@@ -1,9 +1,9 @@
 <div ng-controller="SearchCards">
 	<div class="filters">
 		<ul class="nav nav-tabs">
-			<li ng-class="{ active: activeCategory === className }"
-				ng-click="activeCategory = className">
-				<a><img ng-src="assets/images/classes/icon-{{className.toLowerCase()}}.png"></a>
+			<li ng-class="{ active: activeCategory === heroClass }"
+				ng-click="activeCategory = heroClass">
+				<a><img ng-src="assets/images/classes/icon-{{heroClass.toLowerCase()}}.png"></a>
 			</li>
 			<li ng-class="{ active: activeCategory === null }"
 				ng-click="activeCategory = null">

@@ -6,7 +6,7 @@ define(['angular',
 	var mod = angular.module('deck.routes', ['hearth.common']);
 	mod.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
-		.when('/decks/new/:class', {
+		.when('/decks/new/:heroClass', {
 			templateUrl: '/assets/javascripts/decks/views/newDeck.html',
 			controller: controllers.NewDeck,
 		})

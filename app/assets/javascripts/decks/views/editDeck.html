@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-8" ng-show="!loading">
+		<ng-include src="'../assets/javascripts/decks/views/searchCards.html'">
+		</ng-include>
+	</div>
+	<div class="col-md-4 active-deck">
+		<div ng-controller="CurrentDeck" class="active-deck">
+			<span ng-bind="deckName"></span>
+			<button ng-click="update()">Update</button>
+			<button ng-click="delete()">Delete</button>
+			<ng-include src="'../assets/javascripts/decks/views/deck.html'">
+			</ng-include>
+		</div>
+	</div>
+</div>

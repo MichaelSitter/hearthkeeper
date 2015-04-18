@@ -5,9 +5,14 @@ define(['angular', 'underscore'], function(angular, _) {
 	mod.service('deckService', function () {
 
 		var cards = {};
+		var heroClass;
 
 		this.getCards = function () {
 			return _.clone(cards);
+		};
+
+		this.setHeroClass = function (heroClass) {
+			heroClass = heroClass;
 		};
 
 		this.addCard = function (card) {
@@ -45,12 +50,33 @@ define(['angular', 'underscore'], function(angular, _) {
 			cards = {};
 		};
 
-		this.saveDeck = function (deckName) {
-			localStorage.decks[deckName] = JSON.stringify(cards);
+		this.getDecks = function () {
+			var decks = {};
+			try {
+				decks = JSON.parse(localStorage.decks);
+			} catch (e) {}
+			return decks;
+		};
+
+		this.saveDeck = function (deckName, heroClass) {
+			var decks = {};
+			try {
+				decks = JSON.parse(localStorage.decks);
+			}
+			catch (e) {
+				delete localStorage.decks;
+			}
+			decks[deckName] = {
+				cards: cards,
+				heroClass: heroClass,
+			};
+			localStorage.decks = JSON.stringify(decks);
 		};
 
 		this.loadDeck = function (deckName) {
-			cards = JSON.parse(localStorage.decks[deckName]);
+			var deck = JSON.parse(localStorage.decks[deckName]);
+			cards = deck.cards;
+			heroClass = deck.heroClass;
 		};
 
 		this.deleteDeck = function (deckName) {
