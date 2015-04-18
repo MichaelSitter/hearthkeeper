@@ -1,12 +1,16 @@
-<p>
-	<span ng-bind="cardCount"></span> / 30
-	<img ng-src="assets/images/stats/dust.png"><span ng-bind="dust"></span>
-</p>
-<table>
-	<tbody>
-		<tr ng-repeat="entry in deck" tooltip-html-unsafe="{{entry.card.description}}">
-			<td ng-bind="entry.card.name"></td>
-			<td ng-bind="entry.count"></td>
-		</tr>
-	</tbody>
-</table>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span ng-bind="cardCount"></span> / 30
+		<img ng-src="assets/images/stats/dust.png"><span ng-bind="dust"></span>
+	</div>
+	<div class="panel-body">
+		<table>
+			<tbody>
+				<tr ng-repeat="entry in deck" tooltip-html-unsafe="{{entry.card.description}}">
+					<td ng-bind="entry.card.name"></td>
+					<td ng-bind="entry.count"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
