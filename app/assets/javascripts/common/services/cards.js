@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 		$httpProvider.defaults.cache = true;
 	}]);
 
-	mod.service('cards', ['$http', '$q', function($http, $q) {
+	mod.service('cardService', ['$http', '$q', function($http, $q) {
 
 		var url = 'https://irythia-hs.p.mashape.com/cards';
 

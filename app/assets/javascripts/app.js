@@ -5,16 +5,12 @@ define(['angular',
 	], function(angular) {
 		'use strict';
 
-		var mod = angular.module('app', [
+		return angular.module('app', [
 			'hearth.home',
 			'hearth.decks',
 			'hearth.common',
 			'ui.bootstrap',
 		]);
 
-		mod.run(function (cards) {
-			// Pre-load card data
-			cards.get();
-		});
-		return mod;
+		// TODO: Re-add eager loading for card data
 	});

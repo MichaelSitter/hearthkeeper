@@ -92,7 +92,7 @@ define(['underscore'], function (_) {
 			deckService.removeCard(card);
 		};
 	};
-	SearchCards.$inject = ['$scope', '$routeParams', 'cards', 'deckService'];
+	SearchCards.$inject = ['$scope', '$routeParams', 'cardService', 'deckService'];
 
 	var CurrentDeck = function ($scope, $routeParams, deckService) {
 
