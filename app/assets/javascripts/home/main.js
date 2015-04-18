@@ -8,6 +8,7 @@ define(['angular',
 			'home.routes',
 		]);
 
+		mod.controller('HomeCtrl', controllers.HomeCtrl);
 		mod.controller('HeaderCtrl', controllers.HeaderCtrl);
 		mod.controller('FooterCtrl', controllers.FooterCtrl);
 

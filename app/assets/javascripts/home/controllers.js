@@ -1,9 +1,10 @@
 define([], function() {
 	'use strict';
 
-	var HomeCtrl = function() {
+	var HomeCtrl = function($scope) {
+		console.log($scope);
 	};
-	HomeCtrl.$inject = [];
+	HomeCtrl.$inject = ['$scope'];
 
 	var HeaderCtrl = function(/*$scope*/) {
 	};

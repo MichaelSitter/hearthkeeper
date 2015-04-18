@@ -1,6 +1,6 @@
 define(['angular',
-		'./controllers',
-		'./routes',
+	'./controllers',
+	'./routes',
 	], function(angular, controllers) {
 	'use strict';
 
